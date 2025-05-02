@@ -1,18 +1,18 @@
 {
   "context": {
-    "projectPath": "C:/Users/dorje/PROYECTO_UAJ/Packages",
+    "projectPath": "C:/Users/dorje/Documents/GitHub/UAJ25-G08-PF/PROYECTO_UAJ/Packages",
     "unityVersion": "6000.0.48f1"
   },
   "inputs": [
-    "C:\\Users\\dorje\\PROYECTO_UAJ\\Packages\\manifest.json",
-    "C:\\Users\\dorje\\PROYECTO_UAJ\\Packages\\packages-lock.json",
+    "C:\\Users\\dorje\\Documents\\GitHub\\UAJ25-G08-PF\\PROYECTO_UAJ\\Packages\\manifest.json",
+    "C:\\Users\\dorje\\Documents\\GitHub\\UAJ25-G08-PF\\PROYECTO_UAJ\\Packages\\packages-lock.json",
     "C:\\Program Files\\Unity\\Hub\\Editor\\6000.0.48f1\\Editor\\Data\\Resources\\PackageManager\\BuiltInPackages\\BuiltInPackagesCombined.sha1"
   ],
   "outputs": {
     "com.unity.ai.navigation@2.0.7": {
       "name": "com.unity.ai.navigation",
       "displayName": "AI Navigation",
-      "resolvedPath": "C:\\Users\\dorje\\PROYECTO_UAJ\\Library\\PackageCache\\com.unity.ai.navigation@39ae74efb85f",
+      "resolvedPath": "C:\\Users\\dorje\\Documents\\GitHub\\UAJ25-G08-PF\\PROYECTO_UAJ\\Library\\PackageCache\\com.unity.ai.navigation@39ae74efb85f",
       "fingerprint": "39ae74efb85f9b44dc389774fc59c2ce4a8aa3b6",
       "editorCompatibility": "6000.0.0a1",
       "version": "2.0.7",
@@ -22,7 +22,7 @@
     "com.unity.burst@1.8.21": {
       "name": "com.unity.burst",
       "displayName": "Burst",
-      "resolvedPath": "C:\\Users\\dorje\\PROYECTO_UAJ\\Library\\PackageCache\\com.unity.burst@59eb6f11d242",
+      "resolvedPath": "C:\\Users\\dorje\\Documents\\GitHub\\UAJ25-G08-PF\\PROYECTO_UAJ\\Library\\PackageCache\\com.unity.burst@59eb6f11d242",
       "fingerprint": "59eb6f11d2422f95682320d9daa3e79fdb076744",
       "editorCompatibility": "2020.3.0a1",
       "version": "1.8.21",
@@ -32,7 +32,7 @@
     "com.unity.cinemachine@2.10.3": {
       "name": "com.unity.cinemachine",
       "displayName": "Cinemachine",
-      "resolvedPath": "C:\\Users\\dorje\\PROYECTO_UAJ\\Library\\PackageCache\\com.unity.cinemachine@dcc61ebd6655",
+      "resolvedPath": "C:\\Users\\dorje\\Documents\\GitHub\\UAJ25-G08-PF\\PROYECTO_UAJ\\Library\\PackageCache\\com.unity.cinemachine@dcc61ebd6655",
       "fingerprint": "dcc61ebd6655e32f2b7f8ebca32ca02be455e2d9",
       "editorCompatibility": "2019.4.0a1",
       "version": "2.10.3",
@@ -42,7 +42,7 @@
     "com.unity.collab-proxy@2.8.1": {
       "name": "com.unity.collab-proxy",
       "displayName": "Version Control",
-      "resolvedPath": "C:\\Users\\dorje\\PROYECTO_UAJ\\Library\\PackageCache\\com.unity.collab-proxy@946053a44d19",
+      "resolvedPath": "C:\\Users\\dorje\\Documents\\GitHub\\UAJ25-G08-PF\\PROYECTO_UAJ\\Library\\PackageCache\\com.unity.collab-proxy@946053a44d19",
       "fingerprint": "946053a44d19ed7bf32864432d78cbd5830e46f3",
       "editorCompatibility": "2021.3.0f1",
       "version": "2.8.1",
@@ -52,7 +52,7 @@
     "com.unity.collections@2.5.1": {
       "name": "com.unity.collections",
       "displayName": "Collections",
-      "resolvedPath": "C:\\Users\\dorje\\PROYECTO_UAJ\\Library\\PackageCache\\com.unity.collections@56bff8827a7e",
+      "resolvedPath": "C:\\Users\\dorje\\Documents\\GitHub\\UAJ25-G08-PF\\PROYECTO_UAJ\\Library\\PackageCache\\com.unity.collections@56bff8827a7e",
       "fingerprint": "56bff8827a7ef6d44fcee4f36e558a74da89c1a0",
       "editorCompatibility": "2022.3.11f1",
       "version": "2.5.1",
@@ -62,7 +62,7 @@
     "com.unity.ext.nunit@2.0.5": {
       "name": "com.unity.ext.nunit",
       "displayName": "Custom NUnit",
-      "resolvedPath": "C:\\Users\\dorje\\PROYECTO_UAJ\\Library\\PackageCache\\com.unity.ext.nunit@031a54704bff",
+      "resolvedPath": "C:\\Users\\dorje\\Documents\\GitHub\\UAJ25-G08-PF\\PROYECTO_UAJ\\Library\\PackageCache\\com.unity.ext.nunit@031a54704bff",
       "fingerprint": "031a54704bffe39e6a0324909f8eaa4565bdebf2",
       "editorCompatibility": "2019.4.0a1",
       "version": "2.0.5",
@@ -72,7 +72,7 @@
     "com.unity.ide.rider@3.0.36": {
       "name": "com.unity.ide.rider",
       "displayName": "JetBrains Rider Editor",
-      "resolvedPath": "C:\\Users\\dorje\\PROYECTO_UAJ\\Library\\PackageCache\\com.unity.ide.rider@4d374c7eb6db",
+      "resolvedPath": "C:\\Users\\dorje\\Documents\\GitHub\\UAJ25-G08-PF\\PROYECTO_UAJ\\Library\\PackageCache\\com.unity.ide.rider@4d374c7eb6db",
       "fingerprint": "4d374c7eb6db6907c7e6925e3086c3c73f926e13",
       "editorCompatibility": "2019.4.6f1",
       "version": "3.0.36",
@@ -82,7 +82,7 @@
     "com.unity.ide.visualstudio@2.0.23": {
       "name": "com.unity.ide.visualstudio",
       "displayName": "Visual Studio Editor",
-      "resolvedPath": "C:\\Users\\dorje\\PROYECTO_UAJ\\Library\\PackageCache\\com.unity.ide.visualstudio@198cdf337d13",
+      "resolvedPath": "C:\\Users\\dorje\\Documents\\GitHub\\UAJ25-G08-PF\\PROYECTO_UAJ\\Library\\PackageCache\\com.unity.ide.visualstudio@198cdf337d13",
       "fingerprint": "198cdf337d13c83ca953581515630d66b779e92b",
       "editorCompatibility": "2019.4.25f1",
       "version": "2.0.23",
@@ -92,7 +92,7 @@
     "com.unity.inputsystem@1.14.0": {
       "name": "com.unity.inputsystem",
       "displayName": "Input System",
-      "resolvedPath": "C:\\Users\\dorje\\PROYECTO_UAJ\\Library\\PackageCache\\com.unity.inputsystem@7fe8299111a7",
+      "resolvedPath": "C:\\Users\\dorje\\Documents\\GitHub\\UAJ25-G08-PF\\PROYECTO_UAJ\\Library\\PackageCache\\com.unity.inputsystem@7fe8299111a7",
       "fingerprint": "7fe8299111a78212d8968229ab41a82e4991ba25",
       "editorCompatibility": "2021.3.0a1",
       "version": "1.14.0",
@@ -102,7 +102,7 @@
     "com.unity.mathematics@1.3.2": {
       "name": "com.unity.mathematics",
       "displayName": "Mathematics",
-      "resolvedPath": "C:\\Users\\dorje\\PROYECTO_UAJ\\Library\\PackageCache\\com.unity.mathematics@8017b507cc74",
+      "resolvedPath": "C:\\Users\\dorje\\Documents\\GitHub\\UAJ25-G08-PF\\PROYECTO_UAJ\\Library\\PackageCache\\com.unity.mathematics@8017b507cc74",
       "fingerprint": "8017b507cc74bf0a1dd14b18aa860569f807314d",
       "editorCompatibility": "2021.3.0a1",
       "version": "1.3.2",
@@ -112,7 +112,7 @@
     "com.unity.multiplayer.center@1.0.0": {
       "name": "com.unity.multiplayer.center",
       "displayName": "Multiplayer Center",
-      "resolvedPath": "C:\\Users\\dorje\\PROYECTO_UAJ\\Library\\PackageCache\\com.unity.multiplayer.center@f3fb577b3546",
+      "resolvedPath": "C:\\Users\\dorje\\Documents\\GitHub\\UAJ25-G08-PF\\PROYECTO_UAJ\\Library\\PackageCache\\com.unity.multiplayer.center@f3fb577b3546",
       "fingerprint": "f3fb577b3546594b97b8cc34307cd621f60f1c73",
       "editorCompatibility": "6000.0.0a1",
       "version": "1.0.0",
@@ -122,7 +122,7 @@
     "com.unity.nuget.mono-cecil@1.11.4": {
       "name": "com.unity.nuget.mono-cecil",
       "displayName": "Mono Cecil",
-      "resolvedPath": "C:\\Users\\dorje\\PROYECTO_UAJ\\Library\\PackageCache\\com.unity.nuget.mono-cecil@d6f9955a5d5f",
+      "resolvedPath": "C:\\Users\\dorje\\Documents\\GitHub\\UAJ25-G08-PF\\PROYECTO_UAJ\\Library\\PackageCache\\com.unity.nuget.mono-cecil@d6f9955a5d5f",
       "fingerprint": "d6f9955a5d5f84d45442ff1ad0fb694cc6e2fd62",
       "editorCompatibility": "2018.4.0a1",
       "version": "1.11.4",
@@ -132,7 +132,7 @@
     "com.unity.render-pipelines.core@17.0.4": {
       "name": "com.unity.render-pipelines.core",
       "displayName": "Scriptable Render Pipeline Core",
-      "resolvedPath": "C:\\Users\\dorje\\PROYECTO_UAJ\\Library\\PackageCache\\com.unity.render-pipelines.core@cc4eb362a63a",
+      "resolvedPath": "C:\\Users\\dorje\\Documents\\GitHub\\UAJ25-G08-PF\\PROYECTO_UAJ\\Library\\PackageCache\\com.unity.render-pipelines.core@cc4eb362a63a",
       "fingerprint": "cc4eb362a63a972e85865cd51efd10a56ef1fa2d",
       "editorCompatibility": "6000.0.0a1",
       "version": "17.0.4",
@@ -142,7 +142,7 @@
     "com.unity.render-pipelines.universal@17.0.4": {
       "name": "com.unity.render-pipelines.universal",
       "displayName": "Universal Render Pipeline",
-      "resolvedPath": "C:\\Users\\dorje\\PROYECTO_UAJ\\Library\\PackageCache\\com.unity.render-pipelines.universal@87d5294b44e1",
+      "resolvedPath": "C:\\Users\\dorje\\Documents\\GitHub\\UAJ25-G08-PF\\PROYECTO_UAJ\\Library\\PackageCache\\com.unity.render-pipelines.universal@87d5294b44e1",
       "fingerprint": "87d5294b44e1f1fe17f6e121d93a457e60c70eaf",
       "editorCompatibility": "6000.0.0a1",
       "version": "17.0.4",
@@ -152,7 +152,7 @@
     "com.unity.render-pipelines.universal-config@17.0.3": {
       "name": "com.unity.render-pipelines.universal-config",
       "displayName": "Universal Render Pipeline Config",
-      "resolvedPath": "C:\\Users\\dorje\\PROYECTO_UAJ\\Library\\PackageCache\\com.unity.render-pipelines.universal-config@5146bcc65e41",
+      "resolvedPath": "C:\\Users\\dorje\\Documents\\GitHub\\UAJ25-G08-PF\\PROYECTO_UAJ\\Library\\PackageCache\\com.unity.render-pipelines.universal-config@5146bcc65e41",
       "fingerprint": "5146bcc65e41009551475090f84b75860142cf4b",
       "editorCompatibility": "6000.0.0a1",
       "version": "17.0.3",
@@ -162,7 +162,7 @@
     "com.unity.rendering.light-transport@1.0.1": {
       "name": "com.unity.rendering.light-transport",
       "displayName": "Unity Light Transport Library",
-      "resolvedPath": "C:\\Users\\dorje\\PROYECTO_UAJ\\Library\\PackageCache\\com.unity.rendering.light-transport@307bc27a498f",
+      "resolvedPath": "C:\\Users\\dorje\\Documents\\GitHub\\UAJ25-G08-PF\\PROYECTO_UAJ\\Library\\PackageCache\\com.unity.rendering.light-transport@307bc27a498f",
       "fingerprint": "307bc27a498fc9cd409bbd426c85d8dc7f140bc1",
       "editorCompatibility": "2023.3.0b1",
       "version": "1.0.1",
@@ -172,7 +172,7 @@
     "com.unity.shadergraph@17.0.4": {
       "name": "com.unity.shadergraph",
       "displayName": "Shader Graph",
-      "resolvedPath": "C:\\Users\\dorje\\PROYECTO_UAJ\\Library\\PackageCache\\com.unity.shadergraph@243c7b20d665",
+      "resolvedPath": "C:\\Users\\dorje\\Documents\\GitHub\\UAJ25-G08-PF\\PROYECTO_UAJ\\Library\\PackageCache\\com.unity.shadergraph@243c7b20d665",
       "fingerprint": "243c7b20d6658d589c9c1a4418303a1a3592e333",
       "editorCompatibility": "6000.0.0a1",
       "version": "17.0.4",
@@ -182,7 +182,7 @@
     "com.unity.test-framework@1.5.1": {
       "name": "com.unity.test-framework",
       "displayName": "Test Framework",
-      "resolvedPath": "C:\\Users\\dorje\\PROYECTO_UAJ\\Library\\PackageCache\\com.unity.test-framework@388540dd9ce6",
+      "resolvedPath": "C:\\Users\\dorje\\Documents\\GitHub\\UAJ25-G08-PF\\PROYECTO_UAJ\\Library\\PackageCache\\com.unity.test-framework@388540dd9ce6",
       "fingerprint": "388540dd9ce60b7f4463a23bfdf0d2dafa9a6f3e",
       "editorCompatibility": "2022.3.0a1",
       "version": "1.5.1",
@@ -192,7 +192,7 @@
     "com.unity.test-framework.performance@3.1.0": {
       "name": "com.unity.test-framework.performance",
       "displayName": "Performance testing API",
-      "resolvedPath": "C:\\Users\\dorje\\PROYECTO_UAJ\\Library\\PackageCache\\com.unity.test-framework.performance@92d1d09a72ed",
+      "resolvedPath": "C:\\Users\\dorje\\Documents\\GitHub\\UAJ25-G08-PF\\PROYECTO_UAJ\\Library\\PackageCache\\com.unity.test-framework.performance@92d1d09a72ed",
       "fingerprint": "92d1d09a72ed696fa23fd76c675b29d211664b50",
       "editorCompatibility": "2020.3.0a1",
       "version": "3.1.0",
@@ -202,7 +202,7 @@
     "com.unity.timeline@1.8.7": {
       "name": "com.unity.timeline",
       "displayName": "Timeline",
-      "resolvedPath": "C:\\Users\\dorje\\PROYECTO_UAJ\\Library\\PackageCache\\com.unity.timeline@c58b4ee65782",
+      "resolvedPath": "C:\\Users\\dorje\\Documents\\GitHub\\UAJ25-G08-PF\\PROYECTO_UAJ\\Library\\PackageCache\\com.unity.timeline@c58b4ee65782",
       "fingerprint": "c58b4ee65782ad38338e29f7ee67787cb6998f04",
       "editorCompatibility": "2019.3.0a1",
       "version": "1.8.7",
@@ -212,7 +212,7 @@
     "com.unity.ugui@2.0.0": {
       "name": "com.unity.ugui",
       "displayName": "Unity UI",
-      "resolvedPath": "C:\\Users\\dorje\\PROYECTO_UAJ\\Library\\PackageCache\\com.unity.ugui@4027c60e8806",
+      "resolvedPath": "C:\\Users\\dorje\\Documents\\GitHub\\UAJ25-G08-PF\\PROYECTO_UAJ\\Library\\PackageCache\\com.unity.ugui@4027c60e8806",
       "fingerprint": "4027c60e8806d4bec21d243459a556359e0533bc",
       "editorCompatibility": "2019.2.0a1",
       "version": "2.0.0",
@@ -222,7 +222,7 @@
     "com.unity.visualscripting@1.9.6": {
       "name": "com.unity.visualscripting",
       "displayName": "Visual Scripting",
-      "resolvedPath": "C:\\Users\\dorje\\PROYECTO_UAJ\\Library\\PackageCache\\com.unity.visualscripting@7dcdc439b230",
+      "resolvedPath": "C:\\Users\\dorje\\Documents\\GitHub\\UAJ25-G08-PF\\PROYECTO_UAJ\\Library\\PackageCache\\com.unity.visualscripting@7dcdc439b230",
       "fingerprint": "7dcdc439b230145cec4202cd6ebad135736e0c14",
       "editorCompatibility": "2021.3.0a1",
       "version": "1.9.6",
@@ -504,7 +504,7 @@
     "com.unity.searcher@4.9.3": {
       "name": "com.unity.searcher",
       "displayName": "Searcher",
-      "resolvedPath": "C:\\Users\\dorje\\PROYECTO_UAJ\\Library\\PackageCache\\com.unity.searcher@1e17ce91558d",
+      "resolvedPath": "C:\\Users\\dorje\\Documents\\GitHub\\UAJ25-G08-PF\\PROYECTO_UAJ\\Library\\PackageCache\\com.unity.searcher@1e17ce91558d",
       "fingerprint": "1e17ce91558d1d9127554adc03d275f39a7466a2",
       "editorCompatibility": "2019.1.0a1",
       "version": "4.9.3",

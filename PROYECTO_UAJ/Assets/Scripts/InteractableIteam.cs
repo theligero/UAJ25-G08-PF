@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 [RequireComponent(typeof(Collider))]
@@ -6,6 +7,9 @@ public class InteractableItem : MonoBehaviour
     [Header("Configuración")]
     [Tooltip("Etiqueta usada para identificar al jugador")]
     public string playerTag = "Player";
+
+    // Evento estático que se dispara al recoger el objeto
+    public static event Action OnItemPicked;
 
     void Reset()
     {
@@ -20,7 +24,8 @@ public class InteractableItem : MonoBehaviour
         if (other.CompareTag(playerTag))
         {
             Debug.Log("¡Objeto recogido!");  // Mensaje en consola
-            Destroy(gameObject);             // Elimina el objeto
+            OnItemPicked?.Invoke();           // Dispara el evento
+            Destroy(gameObject);              // Elimina el objeto
         }
     }
 
