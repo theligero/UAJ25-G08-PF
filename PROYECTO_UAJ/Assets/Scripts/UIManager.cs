@@ -168,8 +168,7 @@ public class UIManager : MonoBehaviour
 
     private void CreatePauseMenu()
     {
-        if (mainCanvas == null)
-        {
+        if (mainCanvas == null) {
             Debug.LogError("UIManager: mainCanvas is null. Make sure CreateHUD has been called.");
             return;
         }
@@ -185,54 +184,50 @@ public class UIManager : MonoBehaviour
         Image bg = pausePanel.AddComponent<Image>();
         bg.color = new Color(0f, 0f, 0f, 0.75f);
 
-        // Contenedor central de botones
-        GameObject menuGO = new GameObject("MenuContainer");
-        menuGO.transform.SetParent(pausePanel.transform, false);
-        RectTransform menuRT = menuGO.AddComponent<RectTransform>();
-        menuRT.anchorMin = new Vector2(0.5f, 0.5f);
-        menuRT.anchorMax = new Vector2(0.5f, 0.5f);
-        menuRT.pivot = new Vector2(0.5f, 0.5f);
-        menuRT.anchoredPosition = Vector2.zero;
-        menuRT.sizeDelta = new Vector2(240f, 380f);
-
-        VerticalLayoutGroup layout = menuGO.AddComponent<VerticalLayoutGroup>();
-        layout.childAlignment = TextAnchor.MiddleCenter;
-        layout.spacing = 16f;
-        layout.padding = new RectOffset(20, 20, 20, 20);
-        layout.childForceExpandHeight = false;
-        layout.childForceExpandWidth = true;
-
-        ContentSizeFitter fitter = menuGO.AddComponent<ContentSizeFitter>();
-        fitter.verticalFit = ContentSizeFitter.FitMode.PreferredSize;
-
         // Fuente
         Font fontBtn = Resources.GetBuiltinResource<Font>("LegacyRuntime.ttf");
 
+        Vector3 screenCenter = new Vector3(Screen.width / 2f, Screen.height / 2f, Camera.main.nearClipPlane + 10f); // +10f o la distancia que necesites desde la cámara
+        Vector3 worldPosition = Camera.main.ScreenToWorldPoint(screenCenter);
+
+
         // Botones
-        CreateButton(menuGO.transform, "Resume", fontBtn, () => TogglePauseMenu());
-        CreateButton(menuGO.transform, "Toggle Flashlight", fontBtn, () => {
+        CreateButton(pausePanel.transform, "Resume", fontBtn, () => TogglePauseMenu(), 0, 300);
+
+        CreateButton(pausePanel.transform, "Restart Level", fontBtn, () => UnityEngine.SceneManagement.SceneManager.LoadScene(
+            UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex), 0, 200);
+
+        CreateButton(pausePanel.transform, "Toggle Flashlight", fontBtn, () => {
             var gf = FindObjectOfType<GreenFlashlight>();
             if (gf != null) gf.flashlight.enabled = !gf.flashlight.enabled;
-        });
-        CreateButton(menuGO.transform, "Restart Level", fontBtn, () => UnityEngine.SceneManagement.SceneManager.LoadScene(
-            UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex));
-        CreateButton(menuGO.transform, "Quit Game", fontBtn, () => Application.Quit());
+        }, 0, 100);
+
+        CreateButton(pausePanel.transform, "Quit Game", fontBtn, () => Application.Quit(), 0, 0);
 
         // Ocultar inicialmente
         pausePanel.SetActive(false);
     }
 
-    private void CreateButton(Transform parent, string label, Font font, UnityEngine.Events.UnityAction onClick)
+    private void CreateButton(Transform parent, string label, Font font, UnityEngine.Events.UnityAction onClick, float x, float y)
     {
         GameObject btnGO = new GameObject(label + "Button");
         btnGO.transform.SetParent(parent, false);
+
         RectTransform btnRT = btnGO.AddComponent<RectTransform>();
-        btnRT.sizeDelta = new Vector2(200f, 50f);
+        btnRT.sizeDelta = new Vector2(200, 50);
 
         Image img = btnGO.AddComponent<Image>();
         img.color = new Color(1f, 1f, 1f, 0.9f);
         Button btn = btnGO.AddComponent<Button>();
+
         btn.onClick.AddListener(onClick);
+        // Pivote y anclas centradas para que (0,0) sea el centro del panel
+        btnRT.anchorMin = new Vector2(0.5f, 0.5f);
+        btnRT.anchorMax = new Vector2(0.5f, 0.5f);
+        btnRT.pivot = new Vector2(0.5f, 0.5f);
+
+        // Posición relativa al centro
+        btnRT.anchoredPosition = new Vector2(x, y);
 
         // Texto
         GameObject txtGO = new GameObject("Text");
