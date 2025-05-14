@@ -166,8 +166,7 @@ public class UIManager : MonoBehaviour
         itemsRT.sizeDelta = new Vector2(200f, 0f);
     }
 
-    private void CreatePauseMenu()
-    {
+    private void CreatePauseMenu() {
         if (mainCanvas == null) {
             Debug.LogError("UIManager: mainCanvas is null. Make sure CreateHUD has been called.");
             return;

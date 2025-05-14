@@ -35,7 +35,7 @@ public class AutoRotateOnIdle : MonoBehaviour {
         if (isIdle) {
             InteractableItem closestItem = null;
             float minDist = float.MaxValue;
-            foreach (var item in FindObjectsOfType<InteractableItem>()) {
+            foreach (var item in Object.FindObjectsByType<InteractableItem>(UnityEngine.FindObjectsSortMode.None)) {
                 float dist = Vector3.Distance(transform.position, item.transform.position);
                 if (dist < minDist) {
                     minDist = dist;

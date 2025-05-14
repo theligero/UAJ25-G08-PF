@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 #if ENABLE_INPUT_SYSTEM
 using UnityEngine.InputSystem;
 #endif
@@ -32,14 +33,12 @@ public class GreenFlashlight : MonoBehaviour
         flashlight.enabled = isOn;
     }
 
-    void Update()
-    {
+    void Update() {
         if (Input.GetKeyDown(toggleKey))
             flashlight.enabled = isOn = !isOn;
     }
 
-    void LateUpdate()
-    {
+    void LateUpdate() {
         if (!isOn) return;
 
         // Mantener posición y rotación
@@ -49,21 +48,18 @@ public class GreenFlashlight : MonoBehaviour
         // 1. Busca el interactable más cercano frente a ti
         InteractableItem best = null;
         float bestScore = float.MinValue;
-        foreach (var item in FindObjectsOfType<InteractableItem>())
-        {
+        foreach (var item in Object.FindObjectsByType<InteractableItem>(UnityEngine.FindObjectsSortMode.None)) {
             Vector3 toItem = (item.transform.position - flashlight.transform.position).normalized;
             float dot = Vector3.Dot(flashlight.transform.forward, toItem);
             // dot=1 frontal, dot=-1 atrás
-            if (dot > bestScore)
-            {
+            if (dot > bestScore) {
                 bestScore = dot;
                 best = item;
             }
         }
 
         // 2. Si el mejor dot se corresponde a un ángulo bajo, cambiar color
-        if (best != null)
-        {
+        if (best != null) {
             float angle = Mathf.Acos(Mathf.Clamp(bestScore, -1f, 1f)) * Mathf.Rad2Deg;
             flashlight.color = (angle <= aimAngleThreshold)
                 ? aimColor
