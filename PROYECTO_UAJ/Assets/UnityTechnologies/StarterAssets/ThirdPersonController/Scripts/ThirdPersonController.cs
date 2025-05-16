@@ -175,13 +175,8 @@ namespace StarterAssets
             _animIDMotionSpeed = Animator.StringToHash("MotionSpeed");
         }
 
-        private void GroundedCheck()
-        {
-            // set sphere position, with offset
-            Vector3 spherePosition = new Vector3(transform.position.x, transform.position.y - GroundedOffset,
-                transform.position.z);
-            Grounded = Physics.CheckSphere(spherePosition, GroundedRadius, GroundLayers,
-                QueryTriggerInteraction.Ignore);
+        private void GroundedCheck() {
+            Grounded = _controller.isGrounded;
 
             // update animator if using character
             if (_hasAnimator)

@@ -44,8 +44,10 @@ public class AutoRotateOnIdle : MonoBehaviour {
             }
 
             if (closestItem != null) {
-                // Dirección completa (incluye altura)
+                // Direccion completa
                 Vector3 direction = closestItem.transform.position - transform.position;
+                direction.y = 0f; // Eliminar componente vertical
+
                 // Rotación objetivo en 3D
                 Quaternion targetRotation = Quaternion.LookRotation(direction);
                 // Girar suavemente hacia la rotación objetivo
