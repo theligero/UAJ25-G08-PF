@@ -1,7 +1,7 @@
 using UnityEngine;
 
 public class ArrowIndicator : MonoBehaviour {
-    public GameObject objetivo; // Objetivo a apuntar
+    private Transform currentTarget; // Objetivo a apuntar
     public Vector3 offset = new Vector3(0, 2, 0); // Altura sobre el jugador
 
     [SerializeField]
@@ -10,12 +10,12 @@ public class ArrowIndicator : MonoBehaviour {
     private GameObject flecha;
 
     void Start() {
-        if (objetivo != null && modeloFlecha != null)
+        if (currentTarget != null && modeloFlecha != null)
             CrearFlecha();
     }
 
     void Update() {
-        if (objetivo != null) {
+        if (currentTarget != null) {
             if (flecha == null && modeloFlecha != null) {
                 CrearFlecha();
             }
@@ -24,7 +24,7 @@ public class ArrowIndicator : MonoBehaviour {
             flecha.transform.position = transform.position + offset;
 
             // Apuntar hacia el objetivo
-            Vector3 direccion = objetivo.transform.position - flecha.transform.position;
+            Vector3 direccion = currentTarget.transform.position - flecha.transform.position;
             if (direccion != Vector3.zero) {
                 flecha.transform.rotation = Quaternion.LookRotation(direccion);
             }
@@ -37,7 +37,23 @@ public class ArrowIndicator : MonoBehaviour {
         }
     }
 
+    void OnEnable() {
+        AccessibilityManager.Instance.NotifyContextEvent += HandleEvent;
+    }
+
+    void OnDisable() {
+        if (AccessibilityManager.Instance != null)
+            AccessibilityManager.Instance.NotifyContextEvent -= HandleEvent;
+    }
+
+
     void CrearFlecha() {
         flecha = Instantiate(modeloFlecha, transform.position + offset, Quaternion.identity, transform);
+    }
+
+    public void HandleEvent(AccessibilityEvent evt) {
+        if (evt.Type == EventType.InterestPoint) {
+            currentTarget = evt.Source;
+        }
     }
 }
