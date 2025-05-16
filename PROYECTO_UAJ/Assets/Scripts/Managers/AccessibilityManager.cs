@@ -20,9 +20,13 @@ public class AccessibilityManager : MonoBehaviour {
         Instance = this;
         DontDestroyOnLoad(gameObject);
 
-        if (player != null) { // Comprobar si ya tiene el componente
+        if (player != null) { // Comprobamos si ya tiene el componente
             if (player.GetComponent<ArrowIndicator>() == null) {
                 var indicator = player.AddComponent<ArrowIndicator>();
+            }
+            if (player.GetComponent<DirectionalAudio>() == null)
+            {
+                var indicator = player.AddComponent<DirectionalAudio>();
             }
         }
     }

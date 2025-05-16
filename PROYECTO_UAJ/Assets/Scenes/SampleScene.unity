@@ -2485,6 +2485,14 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 378516112699860887, guid: 414e1bfb2ed1be648ab88f8a27d88af0, type: 3}
+      propertyPath: clip
+      value: 
+      objectReference: {fileID: 8300000, guid: b55aacc72449fa44ebb26784d471ce09, type: 3}
+    - target: {fileID: 378516112699860887, guid: 414e1bfb2ed1be648ab88f8a27d88af0, type: 3}
+      propertyPath: intensity
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 378516112699860887, guid: 414e1bfb2ed1be648ab88f8a27d88af0, type: 3}
       propertyPath: playerTransform
       value: 
       objectReference: {fileID: 276741589}
