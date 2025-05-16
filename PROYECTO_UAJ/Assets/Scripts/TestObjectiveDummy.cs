@@ -16,7 +16,7 @@ public class TestObjectiveDummy : MonoBehaviour {
 
         // Enviar evento para que la flecha apunte a este dummy
         AccessibilityManager.Instance.SendEvent(new AccessibilityEvent(
-            EventType.InterestPoint, transform, "Nuevo objetivo activado"
+            EventType.InterestPoint, transform, AccessibilityTarget.ALL, "Nuevo objetivo activado"
         ));
 
         if (GetComponent<MeshFilter>() == null) {

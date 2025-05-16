@@ -52,8 +52,18 @@ public class ArrowIndicator : MonoBehaviour {
     }
 
     public void HandleEvent(AccessibilityEvent evt) {
-        if (evt.Type == EventType.InterestPoint) {
-            currentTarget = evt.Source;
+        switch (evt.Type) {
+            case EventType.InterestPoint:
+                    currentTarget = evt.Source;
+                break;
+            case EventType.Enable:
+                if (flecha != null)
+                    flecha.SetActive(true);
+                break;
+            case EventType.Disable:
+                if (flecha != null)
+                    flecha.SetActive(false);
+                break;
         }
     }
 }
