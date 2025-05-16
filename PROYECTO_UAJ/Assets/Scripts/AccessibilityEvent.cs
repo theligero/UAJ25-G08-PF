@@ -5,11 +5,14 @@ public enum EventType {
     Disable,
     InterestPoint,
     DirectionalAudio, // Audio direccional
+    Alert // Alertas
 }
 
-public enum AccessibilityTarget{
+public enum AccessibilityTarget {
     ArrowIndicator,
     DirectionalAudioGuide,
+    AlertGuide,
+
 
     ALL // Broadcast
 }
@@ -20,8 +23,8 @@ public class AccessibilityEvent {
     public AccessibilityTarget Target { get; private set; }
     public Transform Source { get; private set; }
     public string Description { get; private set; }
+    public AudioClip Clip { get; private set; }
 
-    public AudioClip Clip { get; private set; }  
     public AccessibilityEvent(EventType type, Transform source, AccessibilityTarget target = AccessibilityTarget.ALL, string description = "", AudioClip clip = null) {
         Type = type;
         Target = target;

@@ -24,9 +24,11 @@ public class AccessibilityManager : MonoBehaviour {
             if (player.GetComponent<ArrowIndicator>() == null) {
                 var indicator = player.AddComponent<ArrowIndicator>();
             }
-            if (player.GetComponent<DirectionalAudio>() == null)
-            {
+            if (player.GetComponent<DirectionalAudio>() == null) {
                 var indicator = player.AddComponent<DirectionalAudio>();
+            }
+            if (player.GetComponent<AlertFeedback>() == null) {
+                var indicator = player.AddComponent<AlertFeedback>();
             }
         }
     }

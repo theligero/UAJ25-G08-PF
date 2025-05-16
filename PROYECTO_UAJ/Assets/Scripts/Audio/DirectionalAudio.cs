@@ -1,10 +1,8 @@
 using UnityEngine;
-using UnityEngine.Audio;
 
 [RequireComponent(typeof(AudioSource))]
-public class DirectionalAudio : MonoBehaviour
-{
-    [Header("Ajustes de Sonido")]
+public class DirectionalAudio : MonoBehaviour {
+    [Header("Audio Settings")]
     [SerializeField] private float maxAudibleAngle = 90f; // Con 0º significa que el player apunta al objetivo. Con maxAudibleAngle el sonido queda a minVolume
     [SerializeField] private float pitchRange = 0.2f; // Tono
     [SerializeField] private float minVolume = 0.1f; // Volumen mínimo
@@ -12,17 +10,14 @@ public class DirectionalAudio : MonoBehaviour
     private AudioSource src; // Fuente del audio
     private Transform currentTarget; // Transform del objetivo al que apuntamos
 
-    void Awake()
-    {
+    void Awake() {
         src = GetComponent<AudioSource>();
         src.spatialBlend = 1f; // Seteamos el audio a 3D
         src.loop = true; // Loop del audio
     }
 
-    void Update()
-    {
-        if (currentTarget != null)
-        {
+    void Update() {
+        if (currentTarget != null) {
             Vector3 toTarget = (currentTarget.position - transform.position).normalized; // Normalizamos el vector player-objetivo
             float angle = Vector3.Angle(transform.forward, toTarget); // Ángulo entre la dirección y el vector objetivo
             float vol = Mathf.InverseLerp(maxAudibleAngle, 0f, angle); // Si angle = maxAudibleAngle -> volumen al mínimo. Si angle = 0 -> volumen máximo
@@ -36,29 +31,23 @@ public class DirectionalAudio : MonoBehaviour
         }
     }
 
-
-    void OnEnable()
-    {   
+    void OnEnable() {   
         AccessibilityManager.Instance.NotifyContextEvent += HandleEvent;
     }
 
-    void OnDisable()
-    {
+    void OnDisable() {
         if (AccessibilityManager.Instance != null)
             AccessibilityManager.Instance.NotifyContextEvent -= HandleEvent;
     }
 
-    void HandleDirectionalAudio(AccessibilityEvent evt)
-    {
+    void HandleDirectionalAudio(AccessibilityEvent evt) {
         currentTarget = evt.Source; // Guardamos el tranform objetivo
         if (evt.Clip) src.clip = evt.Clip; // Si en el evento clip != null, cargamos el clip
         if (!src.isPlaying && src.clip) src.Play(); // Arrancamos la reproducción
     }
 
-    void HandleEvent(AccessibilityEvent evt)
-    {
-        switch (evt.Type)
-        {
+    void HandleEvent(AccessibilityEvent evt) {
+        switch (evt.Type) {
             case EventType.DirectionalAudio:
                 HandleDirectionalAudio(evt); // Gestionamos el audio
                 break;
