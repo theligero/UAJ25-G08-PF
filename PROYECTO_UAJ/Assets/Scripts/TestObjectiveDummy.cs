@@ -23,9 +23,9 @@ public class TestObjectiveDummy : MonoBehaviour {
             gameObject.AddComponent<MeshFilter>().mesh = Resources.GetBuiltinResource<Mesh>("Cube.fbx");
         }
 
-        if (GetComponent<MeshRenderer>() == null) {
+        if (GetComponent<MeshRenderer>() == null){
             var renderer = gameObject.AddComponent<MeshRenderer>();
-            renderer.material = new Material(Shader.Find("Standard"));
+            renderer.material = new Material(Shader.Find("Universal Render Pipeline/Lit"));
             renderer.material.color = new Color(0f, 0.8f, 0f, 1f);
             renderer.material.SetColor("_EmissionColor", new Color(0f, 0.5f, 0f));
             renderer.material.EnableKeyword("_EMISSION");
