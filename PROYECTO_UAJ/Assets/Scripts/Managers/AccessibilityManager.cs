@@ -39,6 +39,9 @@ public class AccessibilityManager : MonoBehaviour {
             if (player.GetComponent<AutoRotateOnIdle>() == null) {
                 var indicator = player.AddComponent<AutoRotateOnIdle>();
             }
+            if (player.GetComponent<GreenFlashlight>() == null) {
+                var indicator = player.AddComponent<GreenFlashlight>();
+            }
         }
     }
 

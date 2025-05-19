@@ -1,12 +1,13 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.Collections.Generic;
+
 #if ENABLE_INPUT_SYSTEM
 using UnityEngine.InputSystem;
 #endif
 
 [AddComponentMenu("Lighting/Flashlight With Multi-Aim")]
-public class GreenFlashlight : MonoBehaviour
-{
+public class GreenFlashlight : MonoBehaviour {
     [Header("Beam Settings")]
     public Light flashlight;
     public Vector3 offset = new Vector3(0, 0, 0.5f);
@@ -17,9 +18,9 @@ public class GreenFlashlight : MonoBehaviour
     [Header("Toggle")]
     public KeyCode toggleKey = KeyCode.Q;
     private bool isOn = true;
+    private List<Transform> interestPoints = new List<Transform>();
 
-    void Awake()
-    {
+    void Awake() {
         // Crea spotlight si no hay
         if (flashlight == null)
         {
@@ -38,6 +39,17 @@ public class GreenFlashlight : MonoBehaviour
             flashlight.enabled = isOn = !isOn;
     }
 
+    void OnEnable()
+    {
+        AccessibilityManager.Instance.NotifyContextEvent += HandleEvent;
+    }
+
+    void OnDisable()
+    {
+        if (AccessibilityManager.Instance != null)
+            AccessibilityManager.Instance.NotifyContextEvent -= HandleEvent;
+    }
+
     void LateUpdate() {
         if (!isOn) return;
 
@@ -46,24 +58,45 @@ public class GreenFlashlight : MonoBehaviour
         flashlight.transform.rotation = transform.rotation;
 
         // 1. Busca el interactable más cercano frente a ti
-        InteractableItem best = null;
+        Transform best = null;
         float bestScore = float.MinValue;
-        foreach (var item in Object.FindObjectsByType<InteractableItem>(UnityEngine.FindObjectsSortMode.None)) {
-            Vector3 toItem = (item.transform.position - flashlight.transform.position).normalized;
-            float dot = Vector3.Dot(flashlight.transform.forward, toItem);
-            // dot=1 frontal, dot=-1 atrás
+
+        foreach (var target in interestPoints) {
+            if (target == null) continue;
+
+            Vector3 toTarget = (target.position - flashlight.transform.position).normalized;
+            float dot = Vector3.Dot(flashlight.transform.forward, toTarget);
             if (dot > bestScore) {
                 bestScore = dot;
-                best = item;
+                best = target;
             }
         }
 
         // 2. Si el mejor dot se corresponde a un ángulo bajo, cambiar color
         if (best != null) {
             float angle = Mathf.Acos(Mathf.Clamp(bestScore, -1f, 1f)) * Mathf.Rad2Deg;
-            flashlight.color = (angle <= aimAngleThreshold)
-                ? aimColor
-                : defaultColor;
+            flashlight.color = (angle <= aimAngleThreshold) ? aimColor : defaultColor;
+        }
+        else {
+            flashlight.color = defaultColor;
+        }
+    }
+
+    public void HandleEvent(AccessibilityEvent evt) {
+        if (evt.Target != AccessibilityTarget.ArrowIndicator && evt.Target != AccessibilityTarget.ALL)
+            return;
+
+        switch (evt.Type) {
+            case EventType.InterestPoint:
+                if (!interestPoints.Contains(evt.Source))
+                    interestPoints.Add(evt.Source);
+                break;
+            case EventType.Enable:
+                isOn = true;
+                break;
+            case EventType.Disable:
+                isOn = false;
+                break;
         }
     }
 }
