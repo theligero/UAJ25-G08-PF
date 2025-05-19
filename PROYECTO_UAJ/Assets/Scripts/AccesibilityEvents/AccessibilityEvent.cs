@@ -13,7 +13,7 @@ public enum AccessibilityTarget {
     PathVisualizer,
     AutoRotate,
     Flashlight,
-
+    AutoNavigator,
 
     ALL // Broadcast
 }
