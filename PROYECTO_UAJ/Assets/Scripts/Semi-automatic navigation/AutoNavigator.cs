@@ -13,8 +13,7 @@ public class AutoNavigator : MonoBehaviour
 
     private float stoppingDistance = 0.5f;
 
-    void Start()
-    {
+    void Start() {
         agent = GetComponent<NavMeshAgent>();
         input = GetComponent<StarterAssetsInputs>();
         controller = GetComponent<ThirdPersonController>();
@@ -28,8 +27,7 @@ public class AutoNavigator : MonoBehaviour
         agent.speed = controller.MoveSpeed;
     }
 
-    void Update()
-    {
+    void Update() {
         if (!isActive || agent == null)
             return;
 
@@ -101,6 +99,36 @@ public class AutoNavigator : MonoBehaviour
             controller.SetOverrideMoveDirection(null);
             input.move = Vector2.zero;
             agent.ResetPath();
+        }
+    }
+
+    private void OnEnable()
+    {
+        AccessibilityManager.Instance.NotifyContextEvent += HandleEvent;
+    }
+
+    private void OnDisable()
+    {
+        if (AccessibilityManager.Instance != null)
+            AccessibilityManager.Instance.NotifyContextEvent -= HandleEvent;
+    }
+
+    public void HandleEvent(AccessibilityEvent evt)
+    {
+        if (evt.Target != AccessibilityTarget.AutoNavigator && evt.Target != AccessibilityTarget.ALL)
+            return;
+
+        switch (evt.Type)
+        {
+            case EventType.InterestPoint:
+                targetDestination = evt.Source;
+                break;
+            case EventType.Enable:
+                SetAutoNavigation(true, targetDestination);
+                break;
+            case EventType.Disable:
+                SetAutoNavigation(false, targetDestination);
+                break;
         }
     }
 }
