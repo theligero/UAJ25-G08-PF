@@ -83,20 +83,24 @@ public class GreenFlashlight : MonoBehaviour {
     }
 
     public void HandleEvent(AccessibilityEvent evt) {
-        if (evt.Target != AccessibilityTarget.ArrowIndicator && evt.Target != AccessibilityTarget.ALL)
+        if (evt.Target != AccessibilityTarget.Flashlight && evt.Target != AccessibilityTarget.ALL)
             return;
 
-        switch (evt.Type) {
+        switch (evt.Type)
+        {
             case EventType.InterestPoint:
                 if (!interestPoints.Contains(evt.Source))
                     interestPoints.Add(evt.Source);
                 break;
             case EventType.Enable:
                 isOn = true;
+                flashlight.enabled = true;
                 break;
             case EventType.Disable:
                 isOn = false;
+                flashlight.enabled = false;
                 break;
         }
     }
+
 }
