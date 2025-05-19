@@ -42,6 +42,9 @@ public class AccessibilityManager : MonoBehaviour {
             if (player.GetComponent<GreenFlashlight>() == null) {
                 var indicator = player.AddComponent<GreenFlashlight>();
             }
+            if (player.GetComponent<AutoNavigator>() == null) {
+                var indicator = player.AddComponent<AutoNavigator>();
+            }
         }
     }
 

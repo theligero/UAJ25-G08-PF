@@ -2,8 +2,7 @@ using UnityEngine;
 using UnityEngine.AI;
 using StarterAssets;
 
-public class AutoNavigator : MonoBehaviour
-{
+public class AutoNavigator : MonoBehaviour {
     public bool isActive = false;
     public Transform targetDestination;
 
@@ -18,8 +17,7 @@ public class AutoNavigator : MonoBehaviour
         input = GetComponent<StarterAssetsInputs>();
         controller = GetComponent<ThirdPersonController>();
 
-        if (agent != null)
-        {
+        if (agent != null) {
             agent.updatePosition = false; // no mueve automáticamente el transform
             agent.updateRotation = false;
         }
@@ -31,23 +29,6 @@ public class AutoNavigator : MonoBehaviour
         if (!isActive || agent == null)
             return;
 
-        // Buscar destino si ha desaparecido
-        if (targetDestination == null)
-        {
-            GameObject newTarget = GameObject.FindWithTag("Objetivo");
-            if (newTarget != null)
-            {
-                targetDestination = newTarget.transform;
-                agent.SetDestination(targetDestination.position);
-            }
-            else
-            {
-                // Si no hay objetivo, parar y esperar
-                controller.SetOverrideMoveDirection(null);
-                return;
-            }
-        }
-
         agent.SetDestination(targetDestination.position);
 
         if (agent.pathPending || !agent.hasPath)
@@ -58,12 +39,10 @@ public class AutoNavigator : MonoBehaviour
 
         bool wantsToMoveForward = input.move.y > 0.1f;
 
-        if (wantsToMoveForward && direction.magnitude > 0.1f)
-        {
+        if (wantsToMoveForward && direction.magnitude > 0.1f) {
             controller.SetOverrideMoveDirection(direction.normalized);
         }
-        else
-        {
+        else {
             controller.SetOverrideMoveDirection(null);
         }
 
@@ -113,15 +92,14 @@ public class AutoNavigator : MonoBehaviour
             AccessibilityManager.Instance.NotifyContextEvent -= HandleEvent;
     }
 
-    public void HandleEvent(AccessibilityEvent evt)
-    {
+    public void HandleEvent(AccessibilityEvent evt) {
         if (evt.Target != AccessibilityTarget.AutoNavigator && evt.Target != AccessibilityTarget.ALL)
             return;
 
-        switch (evt.Type)
-        {
+        switch (evt.Type) {
             case EventType.InterestPoint:
                 targetDestination = evt.Source;
+                SetAutoNavigation(true, targetDestination);
                 break;
             case EventType.Enable:
                 SetAutoNavigation(true, targetDestination);
