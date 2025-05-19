@@ -30,6 +30,12 @@ public class AccessibilityManager : MonoBehaviour {
             if (player.GetComponent<AlertFeedback>() == null) {
                 var indicator = player.AddComponent<AlertFeedback>();
             }
+            if (player.GetComponent<PathVisualizer>() == null) {
+                var indicator = player.AddComponent<PathVisualizer>();
+            }
+            if (player.GetComponent<LineRenderer>() == null) {
+                var indicator = player.AddComponent<LineRenderer>();
+            }
         }
     }
 

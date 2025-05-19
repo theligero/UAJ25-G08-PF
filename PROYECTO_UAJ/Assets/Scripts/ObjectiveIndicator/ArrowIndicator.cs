@@ -57,11 +57,11 @@ public class ArrowIndicator : MonoBehaviour {
                     currentTarget = evt.Source;
                 break;
             case EventType.Enable:
-                if (flecha != null)
+                if (flecha != null && evt.Target == AccessibilityTarget.ArrowIndicator)
                     flecha.SetActive(true);
                 break;
             case EventType.Disable:
-                if (flecha != null)
+                if (flecha != null && evt.Target == AccessibilityTarget.ArrowIndicator)
                     flecha.SetActive(false);
                 break;
         }

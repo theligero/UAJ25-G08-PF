@@ -12,6 +12,7 @@ public enum AccessibilityTarget {
     ArrowIndicator,
     DirectionalAudioGuide,
     AlertGuide,
+    PathVisualizer,
 
 
     ALL // Broadcast
