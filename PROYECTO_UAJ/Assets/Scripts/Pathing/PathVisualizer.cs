@@ -11,8 +11,7 @@ public class PathVisualizer : MonoBehaviour
     private bool active = true;
 
     private NavMeshPath path;
-    void Start()
-    {
+    void Start() {
         Debug.Log("Para activar/desactivar la línea de pathing pulsa L o el botón oeste del mando");
         path = new NavMeshPath();
         line = GetComponent<LineRenderer>();
@@ -64,18 +63,19 @@ public class PathVisualizer : MonoBehaviour
 
     public void HandleEvent(AccessibilityEvent evt)
     {
+        if (evt.Target != AccessibilityTarget.PathVisualizer && evt.Target != AccessibilityTarget.ALL)
+            return;
+
         switch (evt.Type)
         {
             case EventType.InterestPoint:
                 objetivo = evt.Source;
                 break;
             case EventType.Enable:
-                if (evt.Target == AccessibilityTarget.PathVisualizer)
-                    active = true;
+                active = true;
                 break;
             case EventType.Disable:
-                if (evt.Target == AccessibilityTarget.PathVisualizer)
-                    active = false;
+                 active = false;
                 break;
         }
     }

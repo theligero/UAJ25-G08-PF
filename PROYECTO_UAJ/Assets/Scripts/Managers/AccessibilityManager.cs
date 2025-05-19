@@ -36,13 +36,15 @@ public class AccessibilityManager : MonoBehaviour {
             if (player.GetComponent<LineRenderer>() == null) {
                 var indicator = player.AddComponent<LineRenderer>();
             }
+            if (player.GetComponent<AutoRotateOnIdle>() == null) {
+                var indicator = player.AddComponent<AutoRotateOnIdle>();
+            }
         }
     }
 
     public void SendEvent(AccessibilityEvent evt) {
         if (!accessibilityEnabled) return;
 
-        NotifyContextEvent?.Invoke(evt); // Esto notifica a cualquier suscriptor
-                                         // (Mirad el ejemplo de la flecha para hacer los demas igual)
+        NotifyContextEvent?.Invoke(evt); 
     }
 }

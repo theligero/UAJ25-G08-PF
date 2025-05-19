@@ -13,6 +13,7 @@ public enum AccessibilityTarget {
     DirectionalAudioGuide,
     AlertGuide,
     PathVisualizer,
+    AutoRotate,
 
 
     ALL // Broadcast
