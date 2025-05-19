@@ -3,15 +3,13 @@ using UnityEngine;
 public enum EventType {
     Enable,
     Disable,
-    InterestPoint,
-    DirectionalAudio, // Audio direccional
-    Alert // Alertas
+    InterestPoint
 }
 
 public enum AccessibilityTarget {
     ArrowIndicator,
-    DirectionalAudioGuide,
-    AlertGuide,
+    DirectionalAudio,
+    Alert,
     PathVisualizer,
     AutoRotate,
 

@@ -25,11 +25,11 @@ public class TestObjectiveDummy : MonoBehaviour {
         ));
 
         AccessibilityManager.Instance.SendEvent(new AccessibilityEvent(
-            EventType.DirectionalAudio, transform, AccessibilityTarget.ALL, "Audio objetivo activado", clip
+            EventType.InterestPoint, transform, AccessibilityTarget.DirectionalAudio, "Nuevo objetivo activado", clip
         ));
 
         AccessibilityManager.Instance.SendEvent(new AccessibilityEvent(
-                EventType.Alert, transform, AccessibilityTarget.ALL, "El objetivo está cerca", alertClip
+            EventType.InterestPoint, transform, AccessibilityTarget.Alert, "El objetivo está cerca", alertClip
         ));
 
         if (GetComponent<MeshFilter>() == null) {

@@ -77,8 +77,11 @@ public class AlertFeedback : MonoBehaviour {
     }
 
     void HandleEvent(AccessibilityEvent evt) {
+        if (evt.Target != AccessibilityTarget.Alert)
+            return;
+
         switch (evt.Type) {
-            case EventType.Alert:
+            case EventType.InterestPoint:
                 HandleContextAlert(evt); // Gestionamos la alerta
                 break;
             case EventType.Enable:

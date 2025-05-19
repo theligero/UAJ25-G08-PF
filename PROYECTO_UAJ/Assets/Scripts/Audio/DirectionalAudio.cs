@@ -47,8 +47,11 @@ public class DirectionalAudio : MonoBehaviour {
     }
 
     void HandleEvent(AccessibilityEvent evt) {
+        if (evt.Target != AccessibilityTarget.DirectionalAudio)
+            return;
+
         switch (evt.Type) {
-            case EventType.DirectionalAudio:
+            case EventType.InterestPoint:
                 HandleDirectionalAudio(evt); // Gestionamos el audio
                 break;
             case EventType.Enable:
