@@ -1,5 +1,5 @@
-using System;
 using UnityEngine;
+using UnityEngine.AI;
 using UnityEngine.UI;
 
 [AddComponentMenu("UI/UI Manager Runtime")]
@@ -8,6 +8,11 @@ public class UIManager : MonoBehaviour
     [Header("Game Settings")]
     [Tooltip("Tiempo total en segundos")]
     public float totalTime = 180f;  // 3 minutos
+
+    private Toggle autoNavToggle;
+    private Text autoNavStatusText;
+    [Tooltip("Tecla para activar/desactivar la navegación asistida")]
+    private KeyCode toggleAutoNavKey = KeyCode.E;
 
     [Header("Pause Menu Settings")]
     [Tooltip("Tecla para abrir/cerrar el menú")]
@@ -64,6 +69,30 @@ public class UIManager : MonoBehaviour
         {
             TogglePauseMenu();
         }
+
+        // Toggle de navegación asistida con tecla
+        if (Input.GetKeyDown(toggleAutoNavKey))
+        {
+            AutoNavigator autoNav = FindObjectOfType<AutoNavigator>();
+            var objective = GameObject.FindWithTag("Objetivo");
+
+            if (autoNav != null && objective != null)
+            {
+                bool newState = !autoNav.isActive;
+                autoNav.SetAutoNavigation(newState, objective.transform);
+
+                if (autoNavToggle != null)
+                    autoNavToggle.isOn = newState;
+
+                if (autoNavStatusText != null)
+                {
+                    autoNavStatusText.text = newState ? "ACTIVADO" : "DESACTIVADO";
+                    autoNavStatusText.color = newState ? Color.green : Color.red;
+                }
+            }
+        }
+
+
 
         // Si estamos en pausa, no actualizar cronómetro
         if (isPaused) return;
@@ -149,6 +178,51 @@ public class UIManager : MonoBehaviour
         timeRT.pivot = new Vector2(0f, 0.5f);
         timeRT.anchoredPosition = new Vector2(10f, 0f);
         timeRT.sizeDelta = new Vector2(200f, 0f);
+
+        // Toggle auto semi-automatic navigation
+        GameObject toggleGO = new GameObject("AutoNavToggle");
+        toggleGO.transform.SetParent(panelGO.transform, false);
+        autoNavToggle = toggleGO.AddComponent<Toggle>();
+
+        // Texto del toggle
+        GameObject labelGO = new GameObject("Label");
+        labelGO.transform.SetParent(toggleGO.transform, false);
+        Text label = labelGO.AddComponent<Text>();
+        label.font = font;
+        label.fontSize = 18;
+        label.text = "Navegación Asistida";
+        label.alignment = TextAnchor.MiddleCenter;
+        label.color = Color.white;
+
+        RectTransform labelRT = labelGO.GetComponent<RectTransform>();
+        labelRT.anchorMin = new Vector2(0f, 0f);
+        labelRT.anchorMax = new Vector2(1f, 1f);
+        labelRT.offsetMin = Vector2.zero;
+        labelRT.offsetMax = Vector2.zero;
+
+        // Texto de estado (ACTIVADO / DESACTIVADO)
+        GameObject statusGO = new GameObject("AutoNavStatusText");
+        statusGO.transform.SetParent(toggleGO.transform, false);
+        autoNavStatusText = statusGO.AddComponent<Text>();
+        autoNavStatusText.font = font;
+        autoNavStatusText.fontSize = 16;
+        autoNavStatusText.alignment = TextAnchor.UpperCenter;
+        autoNavStatusText.color = Color.red;
+        autoNavStatusText.text = "DESACTIVADO";
+
+        RectTransform statusRT = statusGO.GetComponent<RectTransform>();
+        statusRT.anchorMin = new Vector2(0f, 0f);
+        statusRT.anchorMax = new Vector2(1f, 0f);
+        statusRT.pivot = new Vector2(0.5f, 1f);
+        statusRT.anchoredPosition = new Vector2(0f, -20f); // debajo del texto principal
+        statusRT.sizeDelta = new Vector2(0f, 20f);
+
+        RectTransform toggleRT = toggleGO.GetComponent<RectTransform>();
+        toggleRT.anchorMin = new Vector2(0.5f, 0f);
+        toggleRT.anchorMax = new Vector2(0.5f, 1f);
+        toggleRT.pivot = new Vector2(0.5f, 0.35f);
+        toggleRT.anchoredPosition = new Vector2(0f, 0f);
+        toggleRT.sizeDelta = new Vector2(250f, 0f);
 
         // Items Text
         GameObject itemsGO = new GameObject("ItemsText");

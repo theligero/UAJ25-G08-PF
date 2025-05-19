@@ -110,6 +110,9 @@ namespace StarterAssets
 
         private bool _hasAnimator;
 
+        private Vector3? _overrideMoveDirection = null; // dirección externa (auto-nav opcional)
+        private float? _overrideSpeed = null;
+
         private bool IsCurrentDeviceMouse
         {
             get
@@ -209,7 +212,7 @@ namespace StarterAssets
         private void Move()
         {
             // set target speed based on move speed, sprint speed and if sprint is pressed
-            float targetSpeed = _input.sprint ? SprintSpeed : MoveSpeed;
+            float targetSpeed = _overrideSpeed.HasValue ? _overrideSpeed.Value : (_input.sprint ? SprintSpeed : MoveSpeed);
 
             // a simplistic acceleration and deceleration designed to be easy to remove, replace, or iterate upon
 
@@ -243,8 +246,16 @@ namespace StarterAssets
             _animationBlend = Mathf.Lerp(_animationBlend, targetSpeed, Time.deltaTime * SpeedChangeRate);
             if (_animationBlend < 0.01f) _animationBlend = 0f;
 
-            // normalise input direction
-            Vector3 inputDirection = new Vector3(_input.move.x, 0.0f, _input.move.y).normalized;
+            Vector3 inputDirection = Vector3.zero;
+
+            if (_overrideMoveDirection.HasValue)
+            {
+                inputDirection = _overrideMoveDirection.Value.normalized;
+            }
+            else
+            {
+                inputDirection = new Vector3(_input.move.x, 0.0f, _input.move.y).normalized;
+            }
 
             // note: Vector2's != operator uses approximation so is not floating point error prone, and is cheaper than magnitude
             // if there is a move input rotate player when the player is moving
@@ -348,6 +359,17 @@ namespace StarterAssets
             if (lfAngle < -360f) lfAngle += 360f;
             if (lfAngle > 360f) lfAngle -= 360f;
             return Mathf.Clamp(lfAngle, lfMin, lfMax);
+        }
+
+        public void SetOverrideMoveDirection(Vector3? direction)
+        {
+            _overrideMoveDirection = direction;
+        }
+
+        public void SetOverrideMoveDirection(Vector3? direction, float? speed = null)
+        {
+            _overrideMoveDirection = direction;
+            _overrideSpeed = speed;
         }
 
         private void OnDrawGizmosSelected()
