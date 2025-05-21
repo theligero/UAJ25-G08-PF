@@ -43,7 +43,6 @@ public class DirectionalAudio : MonoBehaviour {
     void HandleDirectionalAudio(AccessibilityEvent evt) {
         currentTarget = evt.Source; // Guardamos el tranform objetivo
         if (evt.Clip) src.clip = evt.Clip; // Si en el evento clip != null, cargamos el clip
-        if (!src.isPlaying && src.clip) src.Play(); // Arrancamos la reproducción
     }
 
     void HandleEvent(AccessibilityEvent evt) {
