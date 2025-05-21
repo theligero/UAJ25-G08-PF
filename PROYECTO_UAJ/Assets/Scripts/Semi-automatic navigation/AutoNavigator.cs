@@ -81,13 +81,11 @@ public class AutoNavigator : MonoBehaviour {
         }
     }
 
-    private void OnEnable()
-    {
+    private void OnEnable() {
         AccessibilityManager.Instance.NotifyContextEvent += HandleEvent;
     }
 
-    private void OnDisable()
-    {
+    private void OnDisable() {
         if (AccessibilityManager.Instance != null)
             AccessibilityManager.Instance.NotifyContextEvent -= HandleEvent;
     }
@@ -99,7 +97,6 @@ public class AutoNavigator : MonoBehaviour {
         switch (evt.Type) {
             case EventType.InterestPoint:
                 targetDestination = evt.Source;
-                SetAutoNavigation(true, targetDestination);
                 break;
             case EventType.Enable:
                 SetAutoNavigation(true, targetDestination);
