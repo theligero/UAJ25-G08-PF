@@ -24,13 +24,11 @@ public class AccessibilityEvent {
     public AccessibilityTarget Target { get; private set; }
     public Transform Source { get; private set; }
     public string Description { get; private set; }
-    public AudioClip Clip { get; private set; }
 
-    public AccessibilityEvent(EventType type, Transform source, AccessibilityTarget target = AccessibilityTarget.ALL, string description = "", AudioClip clip = null) {
+    public AccessibilityEvent(EventType type, Transform source, AccessibilityTarget target = AccessibilityTarget.ALL, string description = "") {
         Type = type;
         Target = target;
         Source = source;
         Description = description;
-        Clip = clip;
     }
 }

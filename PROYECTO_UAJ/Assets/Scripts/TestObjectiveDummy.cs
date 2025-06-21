@@ -9,11 +9,6 @@ public class TestObjectiveDummy : MonoBehaviour {
 
     private bool activo = true;
 
-    [SerializeField]
-    private AudioClip clip; // Clip de sonido
-    [SerializeField]
-    private AudioClip alertClip; // Clip de la alerta
-
     void Start() {
         if (playerTransform == null) {
             Debug.LogWarning("PlayerTransform no asignado en TestObjectiveDummy");
@@ -21,15 +16,7 @@ public class TestObjectiveDummy : MonoBehaviour {
 
         // Enviamos evento para que la flecha apunte a este dummy
         AccessibilityManager.Instance.SendEvent(new AccessibilityEvent(
-            EventType.InterestPoint, transform, AccessibilityTarget.ALL, "Nuevo objetivo activado", null
-        ));
-
-        AccessibilityManager.Instance.SendEvent(new AccessibilityEvent(
-            EventType.InterestPoint, transform, AccessibilityTarget.DirectionalAudio, "Nuevo objetivo activado", clip
-        ));
-
-        AccessibilityManager.Instance.SendEvent(new AccessibilityEvent(
-            EventType.InterestPoint, transform, AccessibilityTarget.Alert, "El objetivo está cerca", alertClip
+            EventType.InterestPoint, transform, AccessibilityTarget.ALL, "Nuevo objetivo activado"
         ));
 
         if (GetComponent<MeshFilter>() == null) {

@@ -2,6 +2,9 @@ using UnityEngine;
 
 [RequireComponent(typeof(AudioSource))]
 public class DirectionalAudio : MonoBehaviour {
+    [Header("Track")]
+    [SerializeField] private AudioClip clip;
+
     [Header("Audio Settings")]
     [SerializeField] private float maxAudibleAngle = 90f; // Con 0º significa que el player apunta al objetivo. Con maxAudibleAngle el sonido queda a minVolume
     [SerializeField] private float pitchRange = 0.2f; // Tono
@@ -14,6 +17,7 @@ public class DirectionalAudio : MonoBehaviour {
         src = GetComponent<AudioSource>();
         src.spatialBlend = 1f; // Seteamos el audio a 3D
         src.loop = true; // Loop del audio
+        clip = Resources.Load<AudioClip>("Audio/electric-sparks");
     }
 
     void Update() {
@@ -42,11 +46,12 @@ public class DirectionalAudio : MonoBehaviour {
 
     void HandleDirectionalAudio(AccessibilityEvent evt) {
         currentTarget = evt.Source; // Guardamos el tranform objetivo
-        if (evt.Clip) src.clip = evt.Clip; // Si en el evento clip != null, cargamos el clip
+        if (clip) src.clip = clip; // Si en el evento clip != null, cargamos el clip
+        if (!src.isPlaying && src.clip) src.Play();
     }
 
     void HandleEvent(AccessibilityEvent evt) {
-        if (evt.Target != AccessibilityTarget.DirectionalAudio)
+        if (evt.Target != AccessibilityTarget.DirectionalAudio && evt.Target != AccessibilityTarget.ALL)
             return;
 
         switch (evt.Type) {

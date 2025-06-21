@@ -4,6 +4,9 @@ using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(AudioSource))]
 public class AlertFeedback : MonoBehaviour {
+    [Header("Track")]
+    [SerializeField] private AudioClip alertClip;
+
     [Header("Alert Settings")]
     [SerializeField] 
     private float baseVolume = 1f; // Volumen del sonido
@@ -24,13 +27,13 @@ public class AlertFeedback : MonoBehaviour {
     private bool alertsEnabled; // Flag
     private Transform currentTarget; // Transform del objetivo al que apuntamos
     private float nextAlertTime = 0f; // Contador
-    private AudioClip alertClip; 
  
 
     void Awake() {
         src = GetComponent<AudioSource>();
         src.spatialBlend = 0f; // Audio 2D
         alertsEnabled = true;
+        alertClip = Resources.Load<AudioClip>("Audio/notification");
     }
 
     void Update() {
@@ -61,7 +64,7 @@ public class AlertFeedback : MonoBehaviour {
 
     void HandleContextAlert(AccessibilityEvent evt) {
         currentTarget = evt.Source;
-        if (evt.Clip) alertClip = evt.Clip;                                                                        
+        if (alertClip) src.clip = alertClip;                                                                        
     }
 
     void UpdateContextAlert(float intensity) {
@@ -77,7 +80,7 @@ public class AlertFeedback : MonoBehaviour {
     }
 
     void HandleEvent(AccessibilityEvent evt) {
-        if (evt.Target != AccessibilityTarget.Alert)
+        if (evt.Target != AccessibilityTarget.Alert && evt.Target != AccessibilityTarget.ALL)
             return;
 
         switch (evt.Type) {

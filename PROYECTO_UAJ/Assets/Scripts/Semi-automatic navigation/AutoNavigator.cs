@@ -3,7 +3,7 @@ using UnityEngine.AI;
 using StarterAssets;
 
 public class AutoNavigator : MonoBehaviour {
-    public bool isActive = false;
+    public bool isActive = true;
     public Transform targetDestination;
 
     private NavMeshAgent agent;
