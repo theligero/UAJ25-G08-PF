@@ -3,8 +3,7 @@ using UnityEngine.AI;
 using UnityEngine.UI;
 
 [AddComponentMenu("UI/UI Manager Runtime")]
-public class UIManager : MonoBehaviour
-{
+public class UIManager : MonoBehaviour {
     [Header("Game Settings")]
     [Tooltip("Tiempo total en segundos")]
     public float totalTime = 180f;  // 3 minutos
@@ -26,22 +25,12 @@ public class UIManager : MonoBehaviour
     private bool isPaused = false;
     private Canvas mainCanvas;
 
-    void Awake()
-    {
+    void Awake() {
         CreateHUD();
         CreatePauseMenu();
     }
 
-    void OnEnable()
-    {
-    }
-
-    void OnDisable()
-    {
-    }
-
-    void Start()
-    {
+    void Start() {
         // Inicializa valores y oculta menú
         timeRemaining = totalTime;
         itemsRemaining = totalItems;
@@ -54,11 +43,9 @@ public class UIManager : MonoBehaviour
         Time.timeScale = 1f;
     }
 
-    void Update()
-    {
+    void Update() {
         // Toggle pause menu con teclado o mando
-        if (Input.GetKeyDown(toggleMenuKey) || Input.GetButtonDown(toggleMenuButton))
-        {
+        if (Input.GetKeyDown(toggleMenuKey) || Input.GetButtonDown(toggleMenuButton)) {
             TogglePauseMenu();
         }
 
@@ -66,48 +53,35 @@ public class UIManager : MonoBehaviour
         if (isPaused) return;
 
         // Cuenta atrás
-        if (timeRemaining > 0f)
-        {
+        if (timeRemaining > 0f) {
             timeRemaining -= Time.deltaTime;
             if (timeRemaining < 0f) timeRemaining = 0f;
             UpdateTimeText();
         }
     }
 
-    private void HandleItemPicked()
-    {
-        // Decrementa y actualiza conteo
-        itemsRemaining = Mathf.Max(0, itemsRemaining - 1);
-        UpdateItemsText();
-    }
-
-    private void UpdateTimeText()
-    {
+    private void UpdateTimeText() {
         int minutes = Mathf.FloorToInt(timeRemaining / 60f);
         int seconds = Mathf.FloorToInt(timeRemaining % 60f);
         if (timeText != null)
             timeText.text = string.Format("Tiempo: {0:00}:{1:00}", minutes, seconds);
     }
 
-    private void UpdateItemsText()
-    {
+    private void UpdateItemsText() {
         if (itemsText != null)
             itemsText.text = string.Format("Objetos restantes: {0}/{1}", itemsRemaining, totalItems);
     }
 
-    private void TogglePauseMenu()
-    {
+    private void TogglePauseMenu() {
         isPaused = !isPaused;
-        if (pausePanel != null)
-        {
+        if (pausePanel != null) {
             pausePanel.SetActive(isPaused);
             pausePanel.transform.SetAsLastSibling();
         }
         Time.timeScale = isPaused ? 0f : 1f;
     }
 
-    private void CreateHUD()
-    {
+    private void CreateHUD()  {
         // --- HUD Canvas ---
         GameObject canvasGO = new GameObject("UICanvas");
         mainCanvas = canvasGO.AddComponent<Canvas>();
@@ -204,8 +178,7 @@ public class UIManager : MonoBehaviour
         pausePanel.SetActive(false);
     }
 
-    private void CreateButton(Transform parent, string label, Font font, UnityEngine.Events.UnityAction onClick, float x, float y)
-    {
+    private void CreateButton(Transform parent, string label, Font font, UnityEngine.Events.UnityAction onClick, float x, float y) {
         GameObject btnGO = new GameObject(label + "Button");
         btnGO.transform.SetParent(parent, false);
 
