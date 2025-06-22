@@ -34,19 +34,16 @@ public class UIManager : MonoBehaviour
 
     void OnEnable()
     {
-        InteractableItem.OnItemPicked += HandleItemPicked;
     }
 
     void OnDisable()
     {
-        InteractableItem.OnItemPicked -= HandleItemPicked;
     }
 
     void Start()
     {
         // Inicializa valores y oculta menú
         timeRemaining = totalTime;
-        totalItems = FindObjectsOfType<InteractableItem>().Length;
         itemsRemaining = totalItems;
         UpdateTimeText();
         UpdateItemsText();

@@ -9,8 +9,7 @@ public class AccessibilityTargetRegister : MonoBehaviour
     [Tooltip("Mensaje descriptivo que se enviará al registrar el objetivo.")]
     public string mensaje = "Nuevo objetivo activado";
 
-    private void Start()
-    {
+    private void Start() {
         AccessibilityManager.Instance.SendEvent(new AccessibilityEvent(
             EventType.InterestPoint, transform, sistemas, mensaje
         ));

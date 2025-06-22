@@ -11,11 +11,9 @@ public class DummyBehaviour : MonoBehaviour
     [HideInInspector]
     public bool activo = true;
 
-    private void Start()
-    {
+    private void Start() {
         // Si no se asignó el jugador, buscar uno automáticamente
-        if (playerTransform == null && GameObject.FindWithTag("Player") != null)
-        {
+        if (playerTransform == null && GameObject.FindWithTag("Player") != null) {
             playerTransform = GameObject.FindWithTag("Player").transform;
         }
 
@@ -29,8 +27,7 @@ public class DummyBehaviour : MonoBehaviour
 
         float dist = Vector3.Distance(transform.position, playerTransform.position);
 
-        if (dist <= distanciaAlcance)
-        {
+        if (dist <= distanciaAlcance){
             activo = false;
 
             Vector3 randomOffset = new Vector3(
@@ -44,8 +41,7 @@ public class DummyBehaviour : MonoBehaviour
             GameObject nuevoDummy = Instantiate(gameObject, nuevoPos, Quaternion.identity);
             DummyBehaviour nuevoScript = nuevoDummy.GetComponent<DummyBehaviour>();
 
-            if (nuevoScript != null)
-            {
+            if (nuevoScript != null) {
                 nuevoScript.playerTransform = playerTransform;
                 nuevoScript.activo = true;
             }
@@ -54,15 +50,12 @@ public class DummyBehaviour : MonoBehaviour
         }
     }
 
-    private void SetupVisuals()
-    {
-        if (GetComponent<MeshFilter>() == null)
-        {
+    private void SetupVisuals() {
+        if (GetComponent<MeshFilter>() == null) {
             gameObject.AddComponent<MeshFilter>().mesh = Resources.GetBuiltinResource<Mesh>("Cube.fbx");
         }
 
-        if (GetComponent<MeshRenderer>() == null)
-        {
+        if (GetComponent<MeshRenderer>() == null) {
             var renderer = gameObject.AddComponent<MeshRenderer>();
             renderer.material = new Material(Shader.Find("Universal Render Pipeline/Lit"));
             renderer.material.color = new Color(0f, 0.8f, 0f, 1f);
