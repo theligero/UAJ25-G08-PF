@@ -1,6 +1,5 @@
 using UnityEngine;
 
-[RequireComponent(typeof(AudioSource))]
 public class DirectionalAudio : MonoBehaviour {
     [Header("Track")]
     [SerializeField] private AudioClip clip;
@@ -14,10 +13,9 @@ public class DirectionalAudio : MonoBehaviour {
     private Transform currentTarget; // Transform del objetivo al que apuntamos
 
     void Awake() {
-        src = GetComponent<AudioSource>();
+        src = gameObject.AddComponent<AudioSource>();
         src.spatialBlend = 1f; // Seteamos el audio a 3D
         src.loop = true; // Loop del audio
-        clip = Resources.Load<AudioClip>("Audio/electric-sparks");
     }
 
     void Update() {

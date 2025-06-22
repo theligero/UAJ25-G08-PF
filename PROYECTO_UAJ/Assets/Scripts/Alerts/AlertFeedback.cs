@@ -2,7 +2,6 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-[RequireComponent(typeof(AudioSource))]
 public class AlertFeedback : MonoBehaviour {
     [Header("Track")]
     [SerializeField] private AudioClip alertClip;
@@ -30,10 +29,9 @@ public class AlertFeedback : MonoBehaviour {
  
 
     void Awake() {
-        src = GetComponent<AudioSource>();
+        src = gameObject.AddComponent<AudioSource>();
         src.spatialBlend = 0f; // Audio 2D
         alertsEnabled = true;
-        alertClip = Resources.Load<AudioClip>("Audio/notification");
     }
 
     void Update() {
