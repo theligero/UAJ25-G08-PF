@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7799735091465687114}
   - component: {fileID: 378516112699860887}
+  - component: {fileID: -3307417591522275436}
   m_Layer: 0
   m_Name: TestObjective
   m_TagString: Objetivo
@@ -47,5 +48,18 @@ MonoBehaviour:
   rangoReaparicion: 5
   distanciaAlcance: 1.5
   playerTransform: {fileID: 0}
-  clip: {fileID: 8300000, guid: 5856137489a35f543b805428c7fdf58a, type: 3}
-  alertClip: {fileID: 8300000, guid: 599604ce717c77a4fbfd87e5e4caab17, type: 3}
+  activo: 1
+--- !u!114 &-3307417591522275436
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5574480427810630498}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79a6d5603a18cd04d9dca369100bd7d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sistemas: 7
+  mensaje: Nuevo objetivo activado
