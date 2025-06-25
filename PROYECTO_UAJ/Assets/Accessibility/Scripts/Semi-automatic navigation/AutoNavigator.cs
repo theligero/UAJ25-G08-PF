@@ -29,6 +29,10 @@ public class AutoNavigator : MonoBehaviour {
         if (!isActive || agent == null)
             return;
 
+        targetDestination = AccessibilityManager.Instance.CurrentObjective;
+
+        if (targetDestination == null) return;
+
         agent.SetDestination(targetDestination.position);
 
         if (agent.pathPending || !agent.hasPath)

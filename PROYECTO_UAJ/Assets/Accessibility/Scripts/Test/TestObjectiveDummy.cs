@@ -30,6 +30,7 @@ public class DummyBehaviour : MonoBehaviour
         if (dist <= distanciaAlcance){
             activo = false;
 
+
             Vector3 randomOffset = new Vector3(
                 Random.Range(-rangoReaparicion, rangoReaparicion),
                 0,
@@ -41,11 +42,14 @@ public class DummyBehaviour : MonoBehaviour
             GameObject nuevoDummy = Instantiate(gameObject, nuevoPos, Quaternion.identity);
             DummyBehaviour nuevoScript = nuevoDummy.GetComponent<DummyBehaviour>();
 
+            AccessibilityManager.Instance.AddObjective(nuevoDummy.transform);
+
             if (nuevoScript != null) {
                 nuevoScript.playerTransform = playerTransform;
                 nuevoScript.activo = true;
             }
 
+            AccessibilityManager.Instance.NextObjective();
             Destroy(gameObject);
         }
     }
