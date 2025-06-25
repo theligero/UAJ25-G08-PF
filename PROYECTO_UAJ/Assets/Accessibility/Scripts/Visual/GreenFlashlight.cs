@@ -18,7 +18,8 @@ public class GreenFlashlight : MonoBehaviour {
     [Header("Toggle")]
     public KeyCode toggleKey = KeyCode.Q;
     private bool isOn = true;
-    private List<Transform> interestPoints = new List<Transform>();
+
+    private Transform target;
 
     void Awake() {
         // Crea spotlight si no hay
@@ -53,26 +54,26 @@ public class GreenFlashlight : MonoBehaviour {
     void LateUpdate() {
         if (!isOn) return;
 
-        // Mantener posición y rotación
+        // Mantenemos posición y rotación
         flashlight.transform.position = transform.TransformPoint(offset);
         flashlight.transform.rotation = transform.rotation;
 
-        // 1. Busca el interactable más cercano frente a ti
+
         Transform best = null;
         float bestScore = float.MinValue;
 
-        foreach (var target in interestPoints) {
-            if (target == null) continue;
-
+        if (target != null)
+        {
             Vector3 toTarget = (target.position - flashlight.transform.position).normalized;
             float dot = Vector3.Dot(flashlight.transform.forward, toTarget);
-            if (dot > bestScore) {
+            if (dot > bestScore)
+            {
                 bestScore = dot;
                 best = target;
             }
         }
 
-        // 2. Si el mejor dot se corresponde a un ángulo bajo, cambiar color
+        // Si el mejor dot se corresponde a un ángulo bajo, cambiamos color
         if (best != null) {
             float angle = Mathf.Acos(Mathf.Clamp(bestScore, -1f, 1f)) * Mathf.Rad2Deg;
             flashlight.color = (angle <= aimAngleThreshold) ? aimColor : defaultColor;
@@ -89,8 +90,7 @@ public class GreenFlashlight : MonoBehaviour {
         switch (evt.Type)
         {
             case EventType.InterestPoint:
-                if (!interestPoints.Contains(evt.Source))
-                    interestPoints.Add(evt.Source);
+                target = evt.Source;
                 break;
             case EventType.Enable:
                 isOn = true;
