@@ -75,7 +75,15 @@ public class AccessibilityManager : MonoBehaviour {
     // Llama a esto desde tu código cuando quieras cambiar el objetivo activo
     public void NextObjective()
     {
-        if (objetivos.Count == 0) return;
+        if (objetivos.Count == 0) {
+           SendEvent(new AccessibilityEvent(
+               EventType.Disable,
+               objetivoActual,
+               AccessibilityTarget.ALL,
+               $"Disable Accessibility"
+           ));
+           return;
+        }
 
         objetivoActual = objetivos.First();
         objetivos.RemoveAt(0);

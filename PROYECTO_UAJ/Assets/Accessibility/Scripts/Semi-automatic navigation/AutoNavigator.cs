@@ -37,7 +37,7 @@ public class AutoNavigator : MonoBehaviour {
 
         if (agent.pathPending || !agent.hasPath)
             return;
-
+        
         Vector3 direction = (agent.steeringTarget - transform.position);
         direction.y = 0;
 

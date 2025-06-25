@@ -31,25 +31,25 @@ public class DummyBehaviour : MonoBehaviour
             activo = false;
 
 
-            Vector3 randomOffset = new Vector3(
-                Random.Range(-rangoReaparicion, rangoReaparicion),
-                0,
-                Random.Range(-rangoReaparicion, rangoReaparicion)
-            );
+            //Vector3 randomOffset = new Vector3(
+            //    Random.Range(-rangoReaparicion, rangoReaparicion),
+            //    0,
+            //    Random.Range(-rangoReaparicion, rangoReaparicion)
+            //);
 
-            Vector3 nuevoPos = transform.position + randomOffset;
+            //Vector3 nuevoPos = transform.position + randomOffset;
 
-            GameObject nuevoDummy = Instantiate(gameObject, nuevoPos, Quaternion.identity);
-            nuevoDummy.name = gameObject.name;
-            DummyBehaviour nuevoScript = nuevoDummy.GetComponent<DummyBehaviour>();
+            //GameObject nuevoDummy = Instantiate(gameObject, nuevoPos, Quaternion.identity);
+            //nuevoDummy.name = gameObject.name;
+            //DummyBehaviour nuevoScript = nuevoDummy.GetComponent<DummyBehaviour>();
 
-            AccessibilityManager.Instance.AddObjective(nuevoDummy.transform);
+            //AccessibilityManager.Instance.AddObjective(nuevoDummy.transform);
 
-            if (nuevoScript != null) {
-                nuevoScript.playerTransform = playerTransform;
-                nuevoScript.activo = true;
-            }
-
+            //if (nuevoScript != null) {
+            //    nuevoScript.playerTransform = playerTransform;
+            //    nuevoScript.activo = true;
+            //}
+       
             AccessibilityManager.Instance.NextObjective();
             Destroy(gameObject);
         }
