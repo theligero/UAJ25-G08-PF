@@ -40,6 +40,7 @@ public class DummyBehaviour : MonoBehaviour
             Vector3 nuevoPos = transform.position + randomOffset;
 
             GameObject nuevoDummy = Instantiate(gameObject, nuevoPos, Quaternion.identity);
+            nuevoDummy.name = gameObject.name;
             DummyBehaviour nuevoScript = nuevoDummy.GetComponent<DummyBehaviour>();
 
             AccessibilityManager.Instance.AddObjective(nuevoDummy.transform);
